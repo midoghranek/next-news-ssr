@@ -1,6 +1,6 @@
 import { colors, NOT_FOUND_IMAGE } from "config";
 import { memo, useState } from "react";
-import RSS from "SVG/RSS";
+import { RSS } from "Icons";
 import type { PostType } from "types";
 
 interface PostProps {
@@ -63,7 +63,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
           flex-wrap: wrap;
         }
         .keywords span {
-          color: #0aa47b;
+          color: ${colors.primary};
           border: 1px solid;
           border-radius: 50px;
           padding: 10px 15px;

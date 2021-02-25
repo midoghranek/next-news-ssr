@@ -1,4 +1,4 @@
-import Post from "components/Post";
+import { Post } from "components";
 import type { PostType } from "types";
 
 const PostsList: React.FC<{ posts: PostType[] }> = ({ posts }) => {
