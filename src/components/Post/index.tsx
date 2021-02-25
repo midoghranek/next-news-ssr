@@ -1,7 +1,7 @@
-import { memo } from "react";
+import { NOT_FOUND_IMAGE } from "config";
+import { memo, useState } from "react";
 import RSS from "SVG/RSS";
 import type { PostType } from "types";
-import { NOT_FOUND_IMAGE } from "config";
 
 interface PostProps {
   data: PostType;
@@ -9,6 +9,7 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ data }) => {
   const date = new Date(data?.created_at);
+  const [sourceLogo, setSourceLogo] = useState(data?.source?.url);
   return (
     <article>
       <div className="header">
@@ -16,10 +17,10 @@ const Post: React.FC<PostProps> = ({ data }) => {
           {data?.source?.url ? (
             <img
               className="image"
-              src={data?.source?.url}
+              src={sourceLogo}
               width={30}
               height={30}
-              onError={(e) => (e.target.src = NOT_FOUND_IMAGE)}
+              onError={() => setSourceLogo(NOT_FOUND_IMAGE)}
             />
           ) : null}
           <h5>{data?.source?.title?.replaceAll("amp;", "")}</h5>
