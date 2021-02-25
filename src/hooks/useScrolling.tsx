@@ -34,7 +34,7 @@ const useScrolling = ({ postsData, page }) => {
   });
 
   const handleScroll = () => {
-    const lastPostLoaded = document.querySelector(
+    const lastPostLoaded: any /* wtf dude */ = document.querySelector(
       ".posts > article:last-child"
     );
     if (lastPostLoaded) {

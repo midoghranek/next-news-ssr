@@ -1,4 +1,4 @@
-import { NOT_FOUND_IMAGE } from "config";
+import { colors, NOT_FOUND_IMAGE } from "config";
 import { memo, useState } from "react";
 import RSS from "SVG/RSS";
 import type { PostType } from "types";
@@ -26,7 +26,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
           <h5>{data?.source?.title?.replaceAll("amp;", "")}</h5>
         </div>
         <div className="icon">
-          <RSS color="#0aa47b" width={25} height={25} />
+          <RSS color={colors.primary} width={25} height={25} />
         </div>
       </div>
       <h2>{data?.title}</h2>
