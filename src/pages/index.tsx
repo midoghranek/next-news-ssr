@@ -13,7 +13,7 @@ export default function Home({ posts, page }) {
       <div className="sidebar"></div>
       <div className="content">
         <PostsList posts={newPosts} />
-        {loading && <h3>Loading ...</h3>}
+        {loading && <h3 className="loading">Loading ...</h3>}
       </div>
       <div className="sidebar"></div>
       <style jsx>{`
@@ -32,6 +32,9 @@ export default function Home({ posts, page }) {
           height: calc(100vh - 40px);
           position: sticky;
           top: 20px;
+        }
+        .loading {
+          text-align: center;
         }
         @media screen and (max-width: 768px) {
           .sidebar {

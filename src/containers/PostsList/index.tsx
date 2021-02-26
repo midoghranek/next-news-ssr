@@ -4,7 +4,7 @@ import type { PostType } from "types";
 const PostsList: React.FC<{ posts: PostType[] }> = ({ posts }) => {
   return (
     <div className="posts">
-      {posts.map((post, index) => (
+      {posts?.map((post, index) => (
         <Post key={`${post._id}--${index}`} data={post} />
       ))}
       <style jsx>{`
