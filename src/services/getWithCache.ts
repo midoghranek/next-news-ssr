@@ -5,10 +5,10 @@ const getWithCache = async (url: string) => {
   if (value) {
     return value;
   } else {
-    const mins = 10;
+    const hours = 24;
     const res = await fetch(url);
     const data = await res.json();
-    cacheData.put(url, data, mins * 1000 * 60);
+    cacheData.put(url, data, hours * 1000 * 60 * 60);
     return data;
   }
 };

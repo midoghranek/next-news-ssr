@@ -1,11 +1,16 @@
 import { colors } from "config";
+import Link from "next/link";
 
 const Header = () => {
   return (
     <header>
       <div className="inner">
         <div className="logo">
-          <h1>NewsBuzz</h1>
+          <h1>
+            <Link href="/">
+              <a>NewsBuzz</a>
+            </Link>
+          </h1>
         </div>
         <div className="buttons">
           <button>LOGIN</button>
@@ -29,6 +34,9 @@ const Header = () => {
           height: 60px;
           background: ${colors.primary};
           color: #fff;
+          position: sticky;
+          top: 0;
+          z-index: 99;
         }
         header h1 {
           margin: 0;

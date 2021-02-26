@@ -3,7 +3,7 @@ import { PostsList } from "containers";
 import { useScrolling } from "hooks";
 import { GetServerSideProps } from "next";
 import { useSelector } from "react-redux";
-import getWithCache from "services/getWithCache";
+import { getWithCache } from "services";
 import { Store } from "states/store";
 
 export default function Home({ posts, page }) {
@@ -32,7 +32,7 @@ export default function Home({ posts, page }) {
           background-color: #fff;
           height: calc(100vh - 40px);
           position: sticky;
-          top: 20px;
+          top: 80px;
         }
         .loading {
           text-align: center;
