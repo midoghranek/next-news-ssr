@@ -1,4 +1,5 @@
 import cacheData from "memory-cache";
+import fetch from "node-fetch";
 
 const getWithCache = async (url: string) => {
   const value = cacheData.get(url);
