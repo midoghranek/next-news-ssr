@@ -7,7 +7,7 @@ import { getWithCache } from "services";
 import { Store } from "states/store";
 
 export default function Home({ posts, page }) {
-  const { loading } = useScrolling({ postsData: posts, page });
+  const { loading, end } = useScrolling({ postsData: posts, page });
   const newPosts = useSelector((state: Store) => state.posts);
   return (
     <div className="container">
@@ -15,6 +15,7 @@ export default function Home({ posts, page }) {
       <div className="content">
         <PostsList posts={newPosts} />
         {loading && <h3 className="loading">Loading ...</h3>}
+        {end && <h3 className="loading">No more</h3>}
       </div>
       <div className="sidebar"></div>
       <style jsx>{`
@@ -59,7 +60,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
   return {
     props: {
-      posts: news.news,
+      posts: news.error ? [] : news?.news,
       page,
     },
   };

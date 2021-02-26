@@ -8,6 +8,7 @@ const getWithCache = async (url: string) => {
     const hours = 24;
     const res = await fetch(url);
     const data = await res.json();
+    if (res.status >= 300) return { error: true };
     cacheData.put(url, data, hours * 1000 * 60 * 60);
     return data;
   }

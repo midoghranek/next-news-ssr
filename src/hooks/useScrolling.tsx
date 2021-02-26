@@ -9,12 +9,14 @@ const useScrolling = ({ postsData, page }) => {
   const [loading, setLoading] = useState(false);
   const startLoading = () => setLoading(true);
   const stopLoading = () => setLoading(false);
+  const [end, setEnd] = useState(false);
 
   useEffect(() => {
     dispatch({
       type: ADD_POSTS,
       payload: postsData,
     });
+    postsData.length === 0 && setEnd(true);
   }, [page]);
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const useScrolling = ({ postsData, page }) => {
         lastPostLoaded.offsetTop + lastPostLoaded.clientHeight;
       const pageOffset = window.pageYOffset + window.innerHeight;
       if (pageOffset > lastPostLoadedOffset) {
-        if (!loading) {
+        if (!loading && !end) {
           const query = router.query;
           query.page = page + 1;
           router.replace(
@@ -60,6 +62,7 @@ const useScrolling = ({ postsData, page }) => {
 
   return {
     loading,
+    end,
   };
 };
 
