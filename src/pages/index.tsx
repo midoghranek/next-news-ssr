@@ -3,6 +3,7 @@ import { PostsList } from "containers";
 import { useScrolling } from "hooks";
 import { GetServerSideProps } from "next";
 import { useSelector } from "react-redux";
+import getWithCache from "services/getWithCache";
 import { Store } from "states/store";
 
 export default function Home({ posts, page }) {
@@ -54,8 +55,7 @@ export default function Home({ posts, page }) {
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   const page = Number(query.page) || 1;
   const skip = page * numberPerPage - numberPerPage;
-  const getNews = await fetch(`${API}?skip=${skip}&limit=${numberPerPage}`);
-  const news = await getNews.json();
+  const news = await getWithCache(`${API}?skip=${skip}&limit=${numberPerPage}`);
 
   return {
     props: {
