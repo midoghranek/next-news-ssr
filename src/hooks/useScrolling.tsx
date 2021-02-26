@@ -42,16 +42,18 @@ const useScrolling = ({ postsData, page }) => {
         lastPostLoaded.offsetTop + lastPostLoaded.clientHeight;
       const pageOffset = window.pageYOffset + window.innerHeight;
       if (pageOffset > lastPostLoadedOffset) {
-        const query = router.query;
-        query.page = page + 1;
-        router.replace(
-          {
-            pathname: router.pathname,
-            query: query,
-          },
-          undefined,
-          { scroll: false }
-        );
+        if (!loading) {
+          const query = router.query;
+          query.page = page + 1;
+          router.replace(
+            {
+              pathname: router.pathname,
+              query: query,
+            },
+            undefined,
+            { scroll: false }
+          );
+        }
       }
     }
   };
