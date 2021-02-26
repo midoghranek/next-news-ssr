@@ -20,6 +20,11 @@ const Header = () => {
           justify-content: space-between;
           align-items: center;
         }
+        @media screen and (max-width: 768px) {
+          .inner {
+            padding: 0 20px;
+          }
+        }
         header {
           height: 60px;
           background: ${colors.primary};
